@@ -79,8 +79,22 @@ export default defineConfig({
   server: {
     // Bind only to loopback to avoid Windows firewall "Allow" prompts
     // Keep port configurable via PORT env; use strictPort so Vite fails if port busy
-    port: Number(process.env.PORT) || 5500,
-    host: "127.0.0.1",
-    strictPort: true,
+      // Keep a fixed port and make HMR client use the same host/port to avoid reconnect prompts
+      port: Number(process.env.PORT) || 5500,
+      host: "0.0.0.0",
+      strictPort: true,
+      hmr: {
+        host: process.env.HMR_HOST || 'localhost',
+        port: Number(process.env.PORT) || 5500,
+        protocol: 'ws',
+        clientPort: Number(process.env.PORT) || 5500,
+        overlay: false,
+      },
+      watch: {
+        // avoid noisy restarts from unrelated temp files
+        ignored: ['**/node_modules/**'],
+        usePolling: false,
+      },
+    },
   },
 });
