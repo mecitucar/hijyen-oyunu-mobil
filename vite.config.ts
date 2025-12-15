@@ -94,7 +94,6 @@ export default defineConfig({
         // avoid noisy restarts from unrelated temp files
         ignored: ['**/node_modules/**'],
         usePolling: false,
-      },
       }
   },
 });
