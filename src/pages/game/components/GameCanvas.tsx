@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import mutsuzImg from '../../../assets/mutsuz.png';
 
 interface GameCanvasProps {
   theme: 'neutral' | 'positive' | 'negative';
@@ -9,12 +10,33 @@ interface GameCanvasProps {
 export default function GameCanvas({ theme, questionTheme, answeredCorrectly }: GameCanvasProps) {
   const [characterPosition, setCharacterPosition] = useState(0);
   const [showCelebration, setShowCelebration] = useState(false);
+  const [showWrong, setShowWrong] = useState(false);
 
   useEffect(() => {
     if (answeredCorrectly === true) {
       setCharacterPosition(prev => prev + 10);
       setShowCelebration(true);
-      setTimeout(() => setShowCelebration(false), 2500);
+      const t = setTimeout(() => setShowCelebration(false), 1800);
+      return () => clearTimeout(t);
+    }
+    if (answeredCorrectly === false) {
+      setShowWrong(true);
+      const t2 = setTimeout(() => setShowWrong(false), 1800);
+      return () => clearTimeout(t2);
+    }
+  }, [answeredCorrectly]);
+
+  // Eğer ebeveyn answeredCorrectly'yi null yaparsa (yeni soru yükleniyor),
+  // kutlamayı hemen gizle ki yeni soru yüklenirken kısa bir görsel kalmasın.
+  useEffect(() => {
+    if (answeredCorrectly === null) {
+      setShowCelebration(false);
+    }
+  }, [answeredCorrectly]);
+
+  useEffect(() => {
+    if (answeredCorrectly === null) {
+      setShowWrong(false);
     }
   }, [answeredCorrectly]);
 
@@ -337,7 +359,7 @@ export default function GameCanvas({ theme, questionTheme, answeredCorrectly }: 
         <div
           className="absolute bottom-28 z-30 pointer-events-none"
           style={{
-              left: showCelebration ? '2%' : '-30%',
+              left: showCelebration ? '0%' : '-30%',
               transform: 'translateX(0%)',
               animation: 'celebrateLeft 2s linear'
           }}
@@ -345,6 +367,23 @@ export default function GameCanvas({ theme, questionTheme, answeredCorrectly }: 
           <img
             src="https://static.readdy.ai/image/1a6dc68b8259eb6118d5042abebc473a/554baf9496b445d209d0b74b2df3d51f.png"
             alt="Kutlama"
+            className="h-96 w-auto object-contain drop-shadow-2xl"
+          />
+        </div>
+      )}
+
+      {showWrong && (
+        <div
+          className="absolute bottom-28 z-30 pointer-events-none"
+          style={{
+              right: showWrong ? '0%' : '-30%',
+              transform: 'translateX(0%)',
+              animation: 'celebrateRight 2s linear'
+          }}
+        >
+          <img
+            src={mutsuzImg}
+            alt="Yanlış"
             className="h-96 w-auto object-contain drop-shadow-2xl"
           />
         </div>
@@ -491,15 +530,33 @@ export default function GameCanvas({ theme, questionTheme, answeredCorrectly }: 
               opacity: 0;
             }
             20% {
-              left: 2%;
+              left: 0%;
               opacity: 1;
             }
             80% {
-              left: 2%;
+              left: 0%;
               opacity: 1;
             }
             100% {
               left: -30%;
+              opacity: 0;
+            }
+          }
+          @keyframes celebrateRight {
+            0% {
+              right: -30%;
+              opacity: 0;
+            }
+            20% {
+              right: 0%;
+              opacity: 1;
+            }
+            80% {
+              right: 0%;
+              opacity: 1;
+            }
+            100% {
+              right: -30%;
               opacity: 0;
             }
           }
