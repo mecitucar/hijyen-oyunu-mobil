@@ -95,6 +95,6 @@ export default defineConfig({
         ignored: ['**/node_modules/**'],
         usePolling: false,
       },
-    },
+      }
   },
 });
