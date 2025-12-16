@@ -19,7 +19,7 @@ export type Question = {
   question: string;
   options: string[];
   correctAnswer: number;
-  theme?: string;
+  theme: string; // Made required to align with QuestionPanelProps
   difficulty?: 'easy' | 'medium' | 'hard';
 };
 
