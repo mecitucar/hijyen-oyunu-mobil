@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 node_modules/
 out/
 .vercel/
@@ -10,3 +11,15 @@ npm-debug.log*
 .idea/
 coverage/
 *.local
+=======
+node_modules
+.vercel
+.env
+.env.local
+.env.*
+out
+dist
+build
+.DS_Store
+*.log
+>>>>>>> recovered-work
