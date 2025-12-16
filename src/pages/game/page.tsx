@@ -3,21 +3,72 @@ import GameCanvas from './components/GameCanvas';
 import QuestionPanel from './components/QuestionPanel';
 import GameHeader from './components/GameHeader';
 import GameOver from './components/GameOver';
-import { questions } from '../../mocks/questions';
+import { generateQuestions, generateQuestionsAsync } from '../../utils/questionGenerator';
 
 export default function GamePage() {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [score, setScore] = useState(0);
   const [lives, setLives] = useState(3);
+  const START_SECONDS = 120; // 2 minutes countdown
+  const [secondsLeft, setSecondsLeft] = useState(START_SECONDS);
   const [gameState, setGameState] = useState<'playing' | 'gameover'>('playing');
   const [backgroundTheme, setBackgroundTheme] = useState<'neutral' | 'positive' | 'negative'>('neutral');
   const [answeredCorrectly, setAnsweredCorrectly] = useState<boolean | null>(null);
+  const [questions, setQuestions] = useState(() => generateQuestions(10));
+  const [loadingQuestions, setLoadingQuestions] = useState(false);
+  const [hfError, setHfError] = useState<string | null>(null);
+
+  useEffect(() => {
+    let timer: number | undefined;
+    if (gameState === 'playing') {
+      timer = window.setInterval(() => {
+        setSecondsLeft(s => {
+          if (s <= 1) {
+            // time's up
+            clearInterval(timer);
+            setGameState('gameover');
+            return 0;
+          }
+          return s - 1;
+        });
+      }, 1000);
+    }
+
+    return () => {
+      if (timer !== undefined) clearInterval(timer);
+    };
+  }, [gameState]);
 
   useEffect(() => {
     if (lives <= 0) {
       setGameState('gameover');
     }
   }, [lives]);
+
+  // Try to load questions from HF proxy on mount (async). Falls back to local generator on error.
+  useEffect(() => {
+    let mounted = true;
+    const load = async () => {
+      setLoadingQuestions(true);
+      try {
+        const qs = await generateQuestionsAsync(10);
+        if (mounted) {
+          setQuestions(qs);
+          setHfError(null);
+        }
+      } catch (e) {
+        console.warn('Failed to load remote questions, using local generator', e);
+        if (mounted) {
+          setQuestions(generateQuestions(10));
+          setHfError(String(e ?? 'Hugging Face fetch failed'));
+        }
+      } finally {
+        if (mounted) setLoadingQuestions(false);
+      }
+    };
+    load();
+    return () => { mounted = false; };
+  }, []);
 
   const handleAnswer = (isCorrect: boolean) => {
     setAnsweredCorrectly(isCorrect);
@@ -30,16 +81,21 @@ export default function GamePage() {
       setLives(lives - 1);
       setBackgroundTheme('negative');
     }
+  };
 
-    setTimeout(() => {
-      if (currentQuestion < questions.length - 1 && lives > (isCorrect ? 0 : 1)) {
-        setCurrentQuestion(currentQuestion + 1);
-        setBackgroundTheme('neutral');
-        setAnsweredCorrectly(null);
-      } else if (lives > (isCorrect ? 0 : 1)) {
-        setGameState('gameover');
-      }
-    }, 2000);
+  const nextQuestion = () => {
+    if (lives <= 0) {
+      setGameState('gameover');
+      return;
+    }
+
+    if (currentQuestion < questions.length - 1) {
+      setCurrentQuestion(currentQuestion + 1);
+      setBackgroundTheme('neutral');
+      setAnsweredCorrectly(null);
+    } else {
+      setGameState('gameover');
+    }
   };
 
   const restartGame = () => {
@@ -49,6 +105,21 @@ export default function GamePage() {
     setGameState('playing');
     setBackgroundTheme('neutral');
     setAnsweredCorrectly(null);
+    // regenerate fresh unique questions for the new run
+    (async () => {
+      setLoadingQuestions(true);
+      try {
+        const qs = await generateQuestionsAsync(10);
+        setQuestions(qs);
+        setHfError(null);
+      } catch (e) {
+        setQuestions(generateQuestions(10));
+        setHfError(String(e ?? 'Hugging Face fetch failed'));
+      } finally {
+        setLoadingQuestions(false);
+      }
+    })();
+    setSecondsLeft(START_SECONDS);
   };
 
   if (gameState === 'gameover') {
@@ -72,21 +143,37 @@ export default function GamePage() {
           lives={lives}
           currentQuestion={currentQuestion + 1}
           totalQuestions={questions.length}
+          elapsedSeconds={secondsLeft}
         />
         
+        {hfError && (
+          <div className="container mx-auto px-4 pt-28">
+            <div className="bg-rose-50 border border-rose-200 text-rose-800 px-4 py-2 rounded-md text-sm flex items-center justify-between">
+              <div>Uzaktan soru yüklenemedi: {hfError}</div>
+              <button onClick={() => setHfError(null)} className="ml-4 text-rose-600 underline">Kapat</button>
+            </div>
+          </div>
+        )}
+
         <div className="container mx-auto px-4 pt-32 pb-20">
-          <QuestionPanel
-            question={questions[currentQuestion]}
-            onAnswer={handleAnswer}
-            disabled={answeredCorrectly !== null}
-          />
+          {loadingQuestions ? (
+            <div className="w-full text-center py-20 text-gray-500">Yükleniyor...</div>
+          ) : (
+            <QuestionPanel
+              question={questions[currentQuestion]}
+              onAnswer={handleAnswer}
+              disabled={answeredCorrectly !== null}
+              answeredCorrectly={answeredCorrectly}
+              onNext={nextQuestion}
+            />
+          )}
         </div>
       </div>
 
       {/* Animasyonlar */}
       <GameCanvas 
         theme={backgroundTheme} 
-        questionTheme={questions[currentQuestion].theme}
+        questionTheme={questions[currentQuestion]?.theme}
         answeredCorrectly={answeredCorrectly}
       />
     </div>

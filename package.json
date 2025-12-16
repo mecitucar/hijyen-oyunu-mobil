@@ -1,12 +1,13 @@
 {
-  "name": "react",
+  "name": "hijyen-oyunu",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.1.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
+    "vercel:dev": "powershell -ExecutionPolicy Bypass -File ./dev-vercel.ps1",
     "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "type-check": "tsc --noEmit --project tsconfig.app.json"
   },
@@ -41,5 +42,9 @@
     "unplugin-auto-import": "^19.3.0",
     "source-map": "^0.7.6",
     "jiti": "^2.6.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mecitucar/hijyen-oyunu.git"
   }
 }

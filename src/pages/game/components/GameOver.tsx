@@ -1,3 +1,5 @@
+import { useNavigate } from 'react-router-dom';
+
 interface GameOverProps {
   score: number;
   totalQuestions: number;
@@ -5,6 +7,7 @@ interface GameOverProps {
 }
 
 export default function GameOver({ score, totalQuestions, onRestart }: GameOverProps) {
+  const navigate = useNavigate();
   const maxScore = totalQuestions * 10;
   const percentage = (score / maxScore) * 100;
 
@@ -63,7 +66,7 @@ export default function GameOver({ score, totalQuestions, onRestart }: GameOverP
             </button>
 
             <button
-              onClick={() => window.location.href = '/'}
+              onClick={() => navigate('/')}
               className="w-full bg-white hover:bg-gray-50 text-gray-700 font-bold text-lg py-4 px-8 rounded-2xl shadow-lg hover:shadow-xl border-2 border-gray-200 transform hover:scale-105 transition-all duration-300 whitespace-nowrap cursor-pointer"
             >
               <i className="ri-home-line mr-3"></i>

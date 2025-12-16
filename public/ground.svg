@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1200" height="300" viewBox="0 120 1200 180" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMax slice">
+  <defs>
+    <linearGradient id="g1" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0%" stop-color="#6BBF1A"/>
+      <stop offset="100%" stop-color="#57A80E"/>
+    </linearGradient>
+    <linearGradient id="g2" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0%" stop-color="#7FD02A"/>
+      <stop offset="100%" stop-color="#5EB10F"/>
+    </linearGradient>
+    <linearGradient id="g3" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0%" stop-color="#8CE63F"/>
+      <stop offset="100%" stop-color="#69C023"/>
+    </linearGradient>
+  </defs>
+
+  <!-- far background strip -->
+  <rect x="0" y="180" width="1200" height="120" fill="url(#g1)"/>
+
+  <!-- middle rolling hill -->
+  <path d="M0 200 C150 170 300 210 480 200 C660 190 820 230 1000 210 C1100 200 1200 190 1200 190 L1200 300 L0 300 Z" fill="url(#g2)"/>
+
+  <!-- front rolling shapes -->
+  <path d="M0 220 C120 200 260 240 420 230 C560 220 700 260 880 240 C980 230 1100 230 1200 230 L1200 300 L0 300 Z" fill="url(#g3)"/>
+
+  <!-- small grass tufts removed for a cleaner ground visual -->
+
+  <!-- subtle overlay removed to keep ground visually simple -->
+
+</svg>
