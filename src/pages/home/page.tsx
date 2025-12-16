@@ -5,7 +5,7 @@ export default function Home() {
   const navigate = useNavigate();
 
   return (
-    <div className="h-screen bg-gradient-to-br from-teal-50 via-cyan-50 to-blue-50 overflow-hidden">
+    <div className="h-screen bg-gradient-to-br from-emerald-50 via-emerald-100 to-emerald-200 overflow-hidden">
       <div className="relative h-full flex items-start justify-center px-4 md:px-6 pt-4 md:pt-6">
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute top-20 left-20 w-72 h-72 bg-teal-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob"></div>
@@ -71,7 +71,7 @@ export default function Home() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 items-center justify-items-center max-w-4xl mx-auto -mt-8 md:-mt-12">
             <div className="w-full h-40 md:h-52 flex items-center justify-center p-6 md:p-12 mt-0 md:mt-0">
               <img 
-                src="/tertemiz_yarınlar.png" 
+                src="/tertemiz_yarinlar.png" 
                 alt="Tertemiz Yarınlar" 
                 loading="lazy"
                 onError={(e) => { (e.currentTarget as HTMLImageElement).src = 'https://static.readdy.ai/image/1a6dc68b8259eb6118d5042abebc473a/1b54d5e3e3679f2c673e8c648eb8802b.png'; }}
@@ -96,7 +96,7 @@ export default function Home() {
               <img 
                 src="/nizam.png" 
                 alt="Kurum Logosu" 
-                className="max-w-full max-h-full object-contain scale-125"
+                className="max-w-full max-h-full object-contain"
               />
             </div>
           </div>
