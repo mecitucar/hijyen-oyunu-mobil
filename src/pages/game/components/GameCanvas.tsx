@@ -158,7 +158,7 @@ export default function GameCanvas({ theme, questionTheme, answeredCorrectly }: 
               )}
             </div>
             <i
-              className="ri-cloud-fill z-30 text-8xl absolute top-56 left-40 drop-shadow-lg"
+              className="hidden md:block ri-cloud-fill z-30 text-8xl absolute top-56 left-40 drop-shadow-lg"
               style={{
                 animationDuration: '3s',
                 color: '#ffffff',
@@ -170,7 +170,7 @@ export default function GameCanvas({ theme, questionTheme, answeredCorrectly }: 
                 WebkitTextStroke: '0.6px rgba(0,0,0,0.06)'
               }}
             ></i>
-              <i className="ri-cloud-fill z-30 text-8xl absolute top-80 right-56 drop-shadow-lg"
+              <i className="hidden md:block ri-cloud-fill z-30 text-8xl absolute top-80 right-56 drop-shadow-lg"
                 style={{
                   animationDuration: '4s',
                   color: '#ffffff',
@@ -188,8 +188,8 @@ export default function GameCanvas({ theme, questionTheme, answeredCorrectly }: 
       } else if (theme === 'negative') {
         return (
           <>
-            <i className="ri-cloud-fill z-30 text-9xl absolute top-64 right-80 drop-shadow-lg" style={{ color: '#ffffff', transform: (showCelebration && answeredCorrectly === true) ? 'scale(1.25) translateX(-18%) translateY(-12%)' : (showWrong && answeredCorrectly === false) ? 'scale(1.6) translateX(40%) translateY(34%)' : 'scale(1.25) translateX(8%) translateY(18%)', transformOrigin: 'center', opacity: 1, transition: 'opacity 220ms ease, transform 320ms ease', textShadow: '0 8px 18px rgba(0,0,0,0.16)', WebkitTextStroke: '0.5px rgba(0,0,0,0.05)' }}></i>
-            <i className="ri-cloud-fill z-30 text-8xl absolute top-60 left-40 drop-shadow-lg" style={{ color: '#ffffff', transform: (showWrong && answeredCorrectly === false) ? 'scale(2.2) translateX(12%)' : 'scale(2)', transformOrigin: 'center', opacity: 1, transition: 'opacity 220ms ease, transform 320ms ease', textShadow: '0 8px 18px rgba(0,0,0,0.16)', WebkitTextStroke: '0.5px rgba(0,0,0,0.05)' }}></i>
+            <i className="hidden md:block ri-cloud-fill z-30 text-9xl absolute top-64 right-80 drop-shadow-lg" style={{ color: '#ffffff', transform: (showCelebration && answeredCorrectly === true) ? 'scale(1.25) translateX(-18%) translateY(-12%)' : (showWrong && answeredCorrectly === false) ? 'scale(1.6) translateX(40%) translateY(34%)' : 'scale(1.25) translateX(8%) translateY(18%)', transformOrigin: 'center', opacity: 1, transition: 'opacity 220ms ease, transform 320ms ease', textShadow: '0 8px 18px rgba(0,0,0,0.16)', WebkitTextStroke: '0.5px rgba(0,0,0,0.05)' }}></i>
+            <i className="hidden md:block ri-cloud-fill z-30 text-8xl absolute top-60 left-40 drop-shadow-lg" style={{ color: '#ffffff', transform: (showWrong && answeredCorrectly === false) ? 'scale(2.2) translateX(12%)' : 'scale(2)', transformOrigin: 'center', opacity: 1, transition: 'opacity 220ms ease, transform 320ms ease', textShadow: '0 8px 18px rgba(0,0,0,0.16)', WebkitTextStroke: '0.5px rgba(0,0,0,0.05)' }}></i>
             
           </>
         );
@@ -247,36 +247,36 @@ export default function GameCanvas({ theme, questionTheme, answeredCorrectly }: 
         <>
           {theme === 'positive' && (
             <>
-              <i className="ri-cloud-fill z-30 text-8xl absolute top-56 left-40 drop-shadow-lg" style={{ color: '#ffffff', transform: 'scale(2)', transformOrigin: 'center', opacity: 1, transition: 'opacity 220ms ease, transform 320ms ease', textShadow: '0 8px 18px rgba(0,0,0,0.18)', WebkitTextStroke: '0.6px rgba(0,0,0,0.06)' }}></i>
-              <i className="ri-cloud-fill z-30 text-7xl absolute top-72 right-64 drop-shadow-lg" style={{ color: '#ffffff', transform: 'scale(1.25) translateX(8%)', transformOrigin: 'center', opacity: 1, transition: 'opacity 220ms ease, transform 320ms ease', textShadow: '0 8px 18px rgba(0,0,0,0.16)', WebkitTextStroke: '0.5px rgba(0,0,0,0.05)' }}></i>
-              {/* Copy of the large left cloud placed near the right cloud */}
-              <i className="ri-cloud-fill z-30 text-8xl absolute drop-shadow-lg" style={{ color: '#ffffff', right: '136px', top: '50%', transform: 'translateY(-50%) scale(2)', transformOrigin: 'center', opacity: 0.98, transition: 'opacity 220ms ease, transform 320ms ease', textShadow: '0 8px 18px rgba(0,0,0,0.18)', WebkitTextStroke: '0.6px rgba(0,0,0,0.06)' }}></i>
-              <i className="ri-cloud-fill z-30 text-7xl absolute drop-shadow-lg" style={{ color: '#ffffff', left: '300px', top: '40%', transform: 'translateY(-34%) scale(1.28)', transformOrigin: 'center', opacity: 0.94, transition: 'opacity 220ms ease, transform 320ms ease', textShadow: '0 7px 14px rgba(0,0,0,0.14)', WebkitTextStroke: '0.45px rgba(0,0,0,0.045)' }}></i>
-              {/* small copy slightly left of the under-copy */}
-              <i className="ri-cloud-fill z-30 text-8xl absolute drop-shadow-lg" style={{ color: '#ffffff', left: '124px', top: '44%', transform: 'translateY(-30%) scale(1.42)', transformOrigin: 'center', opacity: 0.94, transition: 'opacity 220ms ease, transform 320ms ease', textShadow: '0 8px 16px rgba(0,0,0,0.14)', WebkitTextStroke: '0.5px rgba(0,0,0,0.045)' }}></i>
+                <i className="hidden md:block ri-cloud-fill z-30 text-8xl absolute top-56 left-40 drop-shadow-lg" style={{ color: '#ffffff', transform: 'scale(2)', transformOrigin: 'center', opacity: 1, transition: 'opacity 220ms ease, transform 320ms ease', textShadow: '0 8px 18px rgba(0,0,0,0.18)', WebkitTextStroke: '0.6px rgba(0,0,0,0.06)' }}></i>
+                  <i className="hidden md:block ri-cloud-fill z-30 text-7xl absolute top-72 right-64 drop-shadow-lg" style={{ color: '#ffffff', transform: 'scale(1.25) translateX(8%)', transformOrigin: 'center', opacity: 1, transition: 'opacity 220ms ease, transform 320ms ease', textShadow: '0 8px 18px rgba(0,0,0,0.16)', WebkitTextStroke: '0.5px rgba(0,0,0,0.05)' }}></i>
+                  {/* Copy of the large left cloud placed near the right cloud */}
+                  <i className="hidden md:block ri-cloud-fill z-30 text-8xl absolute drop-shadow-lg" style={{ color: '#ffffff', right: '136px', top: '50%', transform: 'translateY(-50%) scale(2)', transformOrigin: 'center', opacity: 0.98, transition: 'opacity 220ms ease, transform 320ms ease', textShadow: '0 8px 18px rgba(0,0,0,0.18)', WebkitTextStroke: '0.6px rgba(0,0,0,0.06)' }}></i>
+                  <i className="hidden md:block ri-cloud-fill z-30 text-7xl absolute drop-shadow-lg" style={{ color: '#ffffff', left: '300px', top: '40%', transform: 'translateY(-34%) scale(1.28)', transformOrigin: 'center', opacity: 0.94, transition: 'opacity 220ms ease, transform 320ms ease', textShadow: '0 7px 14px rgba(0,0,0,0.14)', WebkitTextStroke: '0.45px rgba(0,0,0,0.045)' }}></i>
+                  {/* small copy slightly left of the under-copy */}
+                  <i className="hidden md:block ri-cloud-fill z-30 text-8xl absolute drop-shadow-lg" style={{ color: '#ffffff', left: '124px', top: '44%', transform: 'translateY(-30%) scale(1.42)', transformOrigin: 'center', opacity: 0.94, transition: 'opacity 220ms ease, transform 320ms ease', textShadow: '0 8px 16px rgba(0,0,0,0.14)', WebkitTextStroke: '0.5px rgba(0,0,0,0.045)' }}></i>
             </>
           )}
 
           {theme === 'negative' && (
             <>
-              <i className="ri-cloud-fill z-30 text-9xl absolute top-48 right-96 drop-shadow-lg" style={{ color: '#ffffff', transform: 'scale(1.25) translateX(8%)', transformOrigin: 'center', opacity: 1, transition: 'opacity 220ms ease, transform 320ms ease', textShadow: '0 8px 18px rgba(0,0,0,0.16)', WebkitTextStroke: '0.5px rgba(0,0,0,0.05)' }}></i>
-              <i className="ri-cloud-fill z-30 text-8xl absolute top-60 left-40 drop-shadow-lg" style={{ color: '#ffffff', transform: 'scale(2)', transformOrigin: 'center', opacity: 1, transition: 'opacity 220ms ease, transform 320ms ease', textShadow: '0 8px 18px rgba(0,0,0,0.16)', WebkitTextStroke: '0.5px rgba(0,0,0,0.05)' }}></i>
+              <i className="hidden md:block ri-cloud-fill z-30 text-9xl absolute top-48 right-96 drop-shadow-lg" style={{ color: '#ffffff', transform: 'scale(1.25) translateX(8%)', transformOrigin: 'center', opacity: 1, transition: 'opacity 220ms ease, transform 320ms ease', textShadow: '0 8px 18px rgba(0,0,0,0.16)', WebkitTextStroke: '0.5px rgba(0,0,0,0.05)' }}></i>
+              <i className="hidden md:block ri-cloud-fill z-30 text-8xl absolute top-60 left-40 drop-shadow-lg" style={{ color: '#ffffff', transform: 'scale(2)', transformOrigin: 'center', opacity: 1, transition: 'opacity 220ms ease, transform 320ms ease', textShadow: '0 8px 18px rgba(0,0,0,0.16)', WebkitTextStroke: '0.5px rgba(0,0,0,0.05)' }}></i>
               {/* Copy of the large left cloud placed near the right cloud for negative theme */}
-              <i className="ri-cloud-fill z-30 text-8xl absolute drop-shadow-lg" style={{ color: '#ffffff', right: '166px', top: '50%', transform: 'translateY(-50%) scale(2)', transformOrigin: 'center', opacity: 0.98, transition: 'opacity 220ms ease, transform 320ms ease', textShadow: '0 8px 18px rgba(0,0,0,0.16)', WebkitTextStroke: '0.5px rgba(0,0,0,0.05)' }}></i>
-              <i className="ri-cloud-fill z-30 text-7xl absolute drop-shadow-lg" style={{ color: '#ffffff', left: '300px', top: '42%', transform: 'translateY(-30%) scale(1.25)', transformOrigin: 'center', opacity: 0.92, transition: 'opacity 220ms ease, transform 320ms ease', textShadow: '0 6px 13px rgba(0,0,0,0.13)', WebkitTextStroke: '0.42px rgba(0,0,0,0.043)' }}></i>
+              <i className="hidden md:block ri-cloud-fill z-30 text-8xl absolute drop-shadow-lg" style={{ color: '#ffffff', right: '166px', top: '50%', transform: 'translateY(-50%) scale(2)', transformOrigin: 'center', opacity: 0.98, transition: 'opacity 220ms ease, transform 320ms ease', textShadow: '0 8px 18px rgba(0,0,0,0.16)', WebkitTextStroke: '0.5px rgba(0,0,0,0.05)' }}></i>
+              <i className="hidden md:block ri-cloud-fill z-30 text-7xl absolute drop-shadow-lg" style={{ color: '#ffffff', left: '300px', top: '42%', transform: 'translateY(-30%) scale(1.25)', transformOrigin: 'center', opacity: 0.92, transition: 'opacity 220ms ease, transform 320ms ease', textShadow: '0 6px 13px rgba(0,0,0,0.13)', WebkitTextStroke: '0.42px rgba(0,0,0,0.043)' }}></i>
               {/* small copy slightly left of the under-copy */}
-              <i className="ri-cloud-fill z-30 text-8xl absolute drop-shadow-lg" style={{ color: '#ffffff', left: '124px', top: '46%', transform: 'translateY(-26%) scale(1.38)', transformOrigin: 'center', opacity: 0.92, transition: 'opacity 220ms ease, transform 320ms ease', textShadow: '0 7px 14px rgba(0,0,0,0.13)', WebkitTextStroke: '0.48px rgba(0,0,0,0.044)' }}></i>
+              <i className="hidden md:block ri-cloud-fill z-30 text-8xl absolute drop-shadow-lg" style={{ color: '#ffffff', left: '124px', top: '46%', transform: 'translateY(-26%) scale(1.38)', transformOrigin: 'center', opacity: 0.92, transition: 'opacity 220ms ease, transform 320ms ease', textShadow: '0 7px 14px rgba(0,0,0,0.13)', WebkitTextStroke: '0.48px rgba(0,0,0,0.044)' }}></i>
             </>
           )}
           {theme === 'neutral' && (
             <>
-              <i className="ri-cloud-fill z-30 text-8xl absolute top-56 left-40 drop-shadow-lg" style={{ color: '#ffffff', transform: 'scale(2)', transformOrigin: 'center', opacity: 1, transition: 'opacity 220ms ease, transform 320ms ease', textShadow: '0 8px 18px rgba(0,0,0,0.18)', WebkitTextStroke: '0.6px rgba(0,0,0,0.06)' }}></i>
-              <i className="ri-cloud-fill z-30 text-7xl absolute top-72 right-64 drop-shadow-lg" style={{ color: '#ffffff', transform: 'scale(1.25) translateX(8%)', transformOrigin: 'center', opacity: 1, transition: 'opacity 220ms ease, transform 320ms ease', textShadow: '0 8px 18px rgba(0,0,0,0.16)', WebkitTextStroke: '0.5px rgba(0,0,0,0.05)' }}></i>
-              {/* Copy for neutral as well */}
-              <i className="ri-cloud-fill z-30 text-8xl absolute drop-shadow-lg" style={{ color: '#ffffff', right: '136px', top: '50%', transform: 'translateY(-50%) scale(2)', transformOrigin: 'center', opacity: 0.98, transition: 'opacity 220ms ease, transform 320ms ease', textShadow: '0 8px 18px rgba(0,0,0,0.18)', WebkitTextStroke: '0.6px rgba(0,0,0,0.06)' }}></i>
-              <i className="ri-cloud-fill z-30 text-7xl absolute drop-shadow-lg" style={{ color: '#ffffff', left: '300px', top: '44%', transform: 'translateY(-30%) scale(1.22)', transformOrigin: 'center', opacity: 0.9, transition: 'opacity 220ms ease, transform 320ms ease', textShadow: '0 6px 12px rgba(0,0,0,0.12)', WebkitTextStroke: '0.4px rgba(0,0,0,0.04)' }}></i>
-              {/* small copy slightly left of the under-copy */}
-              <i className="ri-cloud-fill z-30 text-8xl absolute drop-shadow-lg" style={{ color: '#ffffff', left: '124px', top: '48%', transform: 'translateY(-26%) scale(1.32)', transformOrigin: 'center', opacity: 0.9, transition: 'opacity 220ms ease, transform 320ms ease', textShadow: '0 6px 12px rgba(0,0,0,0.12)', WebkitTextStroke: '0.44px rgba(0,0,0,0.042)' }}></i>
+                <i className="hidden md:block ri-cloud-fill z-30 text-8xl absolute top-56 left-40 drop-shadow-lg" style={{ color: '#ffffff', transform: 'scale(2)', transformOrigin: 'center', opacity: 1, transition: 'opacity 220ms ease, transform 320ms ease', textShadow: '0 8px 18px rgba(0,0,0,0.18)', WebkitTextStroke: '0.6px rgba(0,0,0,0.06)' }}></i>
+                  <i className="hidden md:block ri-cloud-fill z-30 text-7xl absolute top-72 right-64 drop-shadow-lg" style={{ color: '#ffffff', transform: 'scale(1.25) translateX(8%)', transformOrigin: 'center', opacity: 1, transition: 'opacity 220ms ease, transform 320ms ease', textShadow: '0 8px 18px rgba(0,0,0,0.16)', WebkitTextStroke: '0.5px rgba(0,0,0,0.05)' }}></i>
+                  {/* Copy for neutral as well */}
+                  <i className="hidden md:block ri-cloud-fill z-30 text-8xl absolute drop-shadow-lg" style={{ color: '#ffffff', right: '136px', top: '50%', transform: 'translateY(-50%) scale(2)', transformOrigin: 'center', opacity: 0.98, transition: 'opacity 220ms ease, transform 320ms ease', textShadow: '0 8px 18px rgba(0,0,0,0.18)', WebkitTextStroke: '0.6px rgba(0,0,0,0.06)' }}></i>
+                  <i className="hidden md:block ri-cloud-fill z-30 text-7xl absolute drop-shadow-lg" style={{ color: '#ffffff', left: '300px', top: '44%', transform: 'translateY(-30%) scale(1.22)', transformOrigin: 'center', opacity: 0.9, transition: 'opacity 220ms ease, transform 320ms ease', textShadow: '0 6px 12px rgba(0,0,0,0.12)', WebkitTextStroke: '0.4px rgba(0,0,0,0.04)' }}></i>
+                  {/* small copy slightly left of the under-copy */}
+                  <i className="hidden md:block ri-cloud-fill z-30 text-8xl absolute drop-shadow-lg" style={{ color: '#ffffff', left: '124px', top: '48%', transform: 'translateY(-26%) scale(1.32)', transformOrigin: 'center', opacity: 0.9, transition: 'opacity 220ms ease, transform 320ms ease', textShadow: '0 6px 12px rgba(0,0,0,0.12)', WebkitTextStroke: '0.44px rgba(0,0,0,0.042)' }}></i>
             </>
           )}
         </>
@@ -317,8 +317,8 @@ export default function GameCanvas({ theme, questionTheme, answeredCorrectly }: 
             ? 'bg-gradient-to-t from-emerald-300/40 to-transparent' 
             : 'bg-gradient-to-t from-gray-400/40 to-transparent'
         }`}>
-          <i className="ri-mountain-line text-9xl text-emerald-400/30 absolute left-10 bottom-0"></i>
-          <i className="ri-mountain-line text-8xl text-teal-400/30 absolute right-20 bottom-0"></i>
+          <i className="hidden md:block ri-mountain-line text-9xl text-emerald-400/30 absolute left-10 bottom-0"></i>
+          <i className="hidden md:block ri-mountain-line text-8xl text-teal-400/30 absolute right-20 bottom-0"></i>
         </div>
       </div>
 
