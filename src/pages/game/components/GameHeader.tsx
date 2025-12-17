@@ -15,10 +15,10 @@ export default function GameHeader({ score, lives, correctCount, incorrectCount,
   return (
     <div className="absolute top-0 left-0 right-0 z-30 bg-white/95 backdrop-blur-sm shadow-lg">
       <div className="max-w-7xl mx-auto px-6 py-4 relative">
-        <div className="flex items-center justify-between">
+        <div className="flex flex-col md:flex-row items-center md:items-center justify-between gap-4 md:gap-0">
 
           {/* Left group: Soru (moved to left) */}
-          <div className="flex items-center gap-4 ml-20">
+          <div className="flex items-center gap-4 ml-4 md:ml-20">
             <div className="flex items-center gap-3">
               <div className="w-12 h-12 flex items-center justify-center rounded-xl relative" style={{ background: 'linear-gradient(135deg,#a78bfa 0%,#7c3aed 100%)', boxShadow: '0 6px 18px rgba(124,58,237,0.12)' }}>
                 <div className="absolute inset-0 rounded-xl" style={{ boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.08)', mixBlendMode: 'overlay' }} />
@@ -48,7 +48,7 @@ export default function GameHeader({ score, lives, correctCount, incorrectCount,
 
           {/* Right group: Canlar + Puan + Timer */}
           <div className="flex items-center gap-8">
-            <div className="flex items-center gap-3 ml-14">
+            <div className="flex items-center gap-3 ml-4 md:ml-14">
               <div className="w-12 h-12 flex items-center justify-center rounded-xl relative" style={{ background: 'linear-gradient(135deg,#2dd4bf 0%,#14b8a6 100%)', boxShadow: '0 6px 18px rgba(20,184,166,0.18)' }}>
                 <div className="absolute inset-0 rounded-xl" style={{ boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.12)', mixBlendMode: 'overlay' }} />
                 <i className="ri-heart-pulse-line text-2xl text-white drop-shadow-sm animate-[pulse_1400ms_ease-in-out_infinite]" style={{ transform: 'scale(1.02)' }}></i>

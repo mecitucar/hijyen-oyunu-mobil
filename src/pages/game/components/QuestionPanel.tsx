@@ -120,9 +120,9 @@ export default function QuestionPanel({ question, onAnswer, disabled, answeredCo
   };
 
   return (
-    <div className="absolute top-24 left-0 right-0 z-50 flex justify-center items-start pointer-events-auto">
-      <div className="max-w-6xl w-full mx-auto px-8">
-        <div ref={cardRef} className="bg-gradient-to-br from-white via-teal-50/30 to-emerald-50/30 backdrop-blur-lg rounded-[1.5rem] shadow-[0_16px_48px_rgba(0,0,0,0.24)] p-6 border-4 border-white/60 ring-4 ring-teal-400/30 overflow-hidden relative" style={{ height: '480px', maxHeight: '66vh' }}>
+    <div className="absolute top-20 md:top-24 left-0 right-0 z-50 flex justify-center items-start pointer-events-auto">
+      <div className="max-w-6xl w-full mx-auto px-4 md:px-8">
+        <div ref={cardRef} className="bg-gradient-to-br from-white via-teal-50/30 to-emerald-50/30 backdrop-blur-lg rounded-[1.5rem] shadow-[0_16px_48px_rgba(0,0,0,0.24)] p-6 border-4 border-white/60 ring-4 ring-teal-400/30 overflow-hidden relative" style={{ height: 'min(480px, 66vh)', maxHeight: '66vh' }}>
           <div className="mb-8 text-center">
             <div className="inline-block bg-gradient-to-r from-teal-500 to-emerald-500 text-transparent bg-clip-text mb-2">
               <i className="ri-question-line text-4xl"></i>
@@ -201,8 +201,7 @@ export default function QuestionPanel({ question, onAnswer, disabled, answeredCo
               onNext && onNext();
             }}
             disabled={answeredCorrectly === null}
-            style={{ position: 'absolute', right: 20, bottom: 10 }}
-            className={`px-5 py-2 rounded-full font-bold shadow-lg transition-all duration-200 ${answeredCorrectly === null ? 'bg-gray-300 text-gray-600 cursor-not-allowed' : answeredCorrectly === true ? 'bg-gradient-to-r from-emerald-400 to-teal-500 text-white' : 'bg-gradient-to-r from-rose-500 to-red-500 text-white'}`}
+            className={`absolute right-4 bottom-3 md:right-5 md:bottom-4 px-4 md:px-5 py-2 rounded-full font-bold shadow-lg transition-all duration-200 ${answeredCorrectly === null ? 'bg-gray-300 text-gray-600 cursor-not-allowed' : answeredCorrectly === true ? 'bg-gradient-to-r from-emerald-400 to-teal-500 text-white' : 'bg-gradient-to-r from-rose-500 to-red-500 text-white'}`}
           >
             Sonraki Soru →
           </button>
